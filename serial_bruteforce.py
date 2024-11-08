@@ -57,12 +57,13 @@ def main():
 				#print(f"[ {response[(len(response)-23):]} ]\n") #TODO: hardcoded
 				print(response_data)
 
-				if re.search(r'X', response) == None:
-					path = '/usr/share/sounds/LinuxMint/stereo/phone-incoming-call.ogg'
+				if re.search(r'not', response) == None:
+					sound = '/usr/share/sounds/LinuxMint/stereo/phone-incoming-call.ogg'
 					if os.path.isfile(sound):
 						os.system(f"xdg-open {sound}") # ring a bell
 					key = line.strip()
 					print(f"key found: {key}")
+					input()
 					break
 	finally:
 		ser.close()
